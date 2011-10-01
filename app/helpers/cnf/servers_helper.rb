@@ -1,0 +1,2 @@
+module Cnf::ServersHelper
+end

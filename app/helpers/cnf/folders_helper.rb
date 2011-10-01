@@ -1,0 +1,2 @@
+module Cnf::FoldersHelper
+end

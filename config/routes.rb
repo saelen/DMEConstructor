@@ -1,9 +1,12 @@
 DMConstructor::Application.routes.draw do
   
+  namespace :cnf do resources :servers end
+
   get "folder/index"
 
   resources :projects
-  namespace :configuration do
+  
+  namespace :cnf do
     resources :folders
   end
   # The priority is based upon order of creation:

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @configuration_server.name %>
+</p>
+
+<p>
+  <b>Server name:</b>
+  <%= @configuration_server.server_name %>
+</p>
+
+
+<%= link_to 'Edit', edit_cnf_server_path(@configuration_server) %> |
+<%= link_to 'Back', cnf_servers_path %>

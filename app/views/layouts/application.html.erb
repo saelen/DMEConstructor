@@ -3,6 +3,7 @@
 <head>
   <title>DMConstructor</title>
   <%= stylesheet_link_tag    "DMConstructor" %>
+  <%= stylesheet_link_tag    "simpletree" %>
   <%= javascript_include_tag "application"%>
   <%= csrf_meta_tags %>
 </head>
@@ -57,7 +58,7 @@
 	</li>
 	<li class="top"><a href="#nogo27" id="contacts" class="top_link"><span class="down">Configuration</span></a>
 		<ul class="sub">
-			<li><%= link_to 'Folders', configuration_folders_path %></a></li>
+			<li><%= link_to 'Folders', cnf_folders_path %></a></li>
 			<li><a href="#nogo29" class="fly">Sales</a>
 				<ul>
 					<li><a href="#nogo30">USA</a></li>

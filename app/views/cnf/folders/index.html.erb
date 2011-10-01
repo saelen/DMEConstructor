@@ -1,0 +1,35 @@
+<h1>Project Folder Structure</h1>
+<a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> | <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contact All</a>
+<br>
+<%= link_to '+', new_cnf_folder_path %>
+<ul id="treemenu1" class="treeview">
+<li>Item 1</li>
+<li>Item 2</li>
+
+<li>Folder 1
+	<ul>
+	<li>Sub Item 1.1</li>
+	<li>Sub Item 1.2</li>
+	</ul>
+</li>
+<li>Item 3</li>
+
+<li>Folder 2
+	<ul>
+	<li>Sub Item 2.1</li>
+	<li>Folder 2.1
+		<ul>
+		<li>Sub Item 2.1.1</li>
+		<li>Sub Item 2.1.2</li>
+		</ul>
+	</li>
+</ul>
+</li>
+
+<li>Item 4</li>
+</ul>
+
+
+<script type="text/javascript">
+ddtreemenu.createTree("treemenu1", true)
+</script>
