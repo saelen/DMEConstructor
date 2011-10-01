@@ -1,4 +1,6 @@
 DMConstructor::Application.routes.draw do
+  get "folder/index"
+
   resources :projects
 
   # The priority is based upon order of creation:
