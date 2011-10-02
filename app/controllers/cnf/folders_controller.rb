@@ -26,7 +26,7 @@ class Cnf::FoldersController < ApplicationController
   # GET /folders/new.json
   def new
     @folder = Cnf::Folder.new
-    @folder.parent_id=parms[:parent_id]
+    @folder.parent_id=params[:parent_id]
         respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @folder }

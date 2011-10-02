@@ -1,7 +1,7 @@
 <h1>Project Folder Structure</h1>
 <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> | <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contact All</a>
 <br>
-[<%= link_to 'New Root Folder', new_cnf_folder_path %>]
+[<%= link_to 'New Root Folder', new_cnf_folder_path(:parent_id => nil) %>]
 <ul id="treemenu1" class="treeview">
 <%= 
 def print_tree(arg_parent_id=nil, arg_level=0)
@@ -12,9 +12,10 @@ def print_tree(arg_parent_id=nil, arg_level=0)
     @folders=Cnf::Folder.find_all_by_parent_id(@arg_parent_id, :order => 'name')
     @folders.each do |folder|
       @html+="\n"+"\t" * @level + "<LI>"
-      @html+= folder.name + " - [" + link_to('X', folder, confirm: 'Are you sure?', method: :delete) + "]"
+      @html+= folder.name + " - ["+ link_to('+', new_cnf_folder_path(:parent_id => folder.id)) +
+      	"][" + link_to('X', folder, confirm: 'Are you sure?', method: :delete) + "]"
       if(not Cnf::Folder.find_by_parent_id(folder.id).nil?)
-        @html+="\n"+"\t"*(@level+1) + "<UL>" + print_tree(3, @level+2) +"\n"+"\t"*(@level+1)+"</UL>"
+        @html+="\n"+"\t"*(@level+1) + "<UL>" + print_tree(folder.id, @level+2) +"\n"+"\t"*(@level+1)+"</UL>"
       end
       @html+="\n"+"\t"*@level+"</LI>" 
     end
