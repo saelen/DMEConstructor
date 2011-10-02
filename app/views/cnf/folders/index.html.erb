@@ -1,8 +1,7 @@
 <h1>Project Folder Structure</h1>
 <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> | <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contact All</a>
 <br>
-[<%= link_to '+', new_cnf_folder_path %>]
-<%= link_to 'Destroy', Cnf::Folder.all[1], confirm: 'Are you sure?', method: :delete %>
+[<%= link_to 'New Root Folder', new_cnf_folder_path %>]
 <ul id="treemenu1" class="treeview">
 <%= 
 def print_tree(arg_parent_id=nil, arg_level=0)
