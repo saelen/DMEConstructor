@@ -45,10 +45,10 @@ submenu.style.display="none"
 submenu.setAttribute("rel", "closed")
 ulelement.parentNode.style.backgroundImage="url("+ddtreemenu.closefolder+")"
 }
-ddtreemenu.preventpropagate(e)
+//ddtreemenu.preventpropagate(e)
 }
 ulelement.onclick=function(e){
-ddtreemenu.preventpropagate(e)
+//ddtreemenu.preventpropagate(e)
 }
 }
 

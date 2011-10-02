@@ -3,7 +3,7 @@ class Cnf::FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Cnf::Folder.all
+    #@folders = Cnf::Folder.all
     
     respond_to do |format|
       format.html # index.html.erb
@@ -25,10 +25,9 @@ class Cnf::FoldersController < ApplicationController
   # GET /folders/new
   # GET /folders/new.json
   def new
-    puts "hai"
     @folder = Cnf::Folder.new
-
-    respond_to do |format|
+    @folder.parent_id=parms[:parent_id]
+        respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @folder }
     end
@@ -44,7 +43,6 @@ class Cnf::FoldersController < ApplicationController
   def create
 
     @folder = Cnf::Folder.new(params[:cnf_folder])
-    logger.info("bla: #{@folder.name}")
     respond_to do |format|
       if @folder.save
         format.html { redirect_to @folder, notice: 'Folder was successfully created.' }
@@ -79,7 +77,7 @@ class Cnf::FoldersController < ApplicationController
     @folder.destroy
 
     respond_to do |format|
-      format.html { redirect_to folders_url }
+      format.html { redirect_to cnf_folders_url }
       format.json { head :ok }
     end
   end

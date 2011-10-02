@@ -1,35 +1,29 @@
 <h1>Project Folder Structure</h1>
 <a href="javascript:ddtreemenu.flatten('treemenu1', 'expand')">Expand All</a> | <a href="javascript:ddtreemenu.flatten('treemenu1', 'contact')">Contact All</a>
 <br>
-<%= link_to '+', new_cnf_folder_path %>
+[<%= link_to '+', new_cnf_folder_path %>]
+<%= link_to 'Destroy', Cnf::Folder.all[1], confirm: 'Are you sure?', method: :delete %>
 <ul id="treemenu1" class="treeview">
-<li>Item 1</li>
-<li>Item 2</li>
+<%= 
+def print_tree(arg_parent_id=nil, arg_level=0)
+    @level = arg_level
+    @html=""
+    @arg_parent_id=arg_parent_id
+    logger.debug "Calling print_tree here are my arguments #{@arg_parent_id} and #{@level}"
+    @folders=Cnf::Folder.find_all_by_parent_id(@arg_parent_id, :order => 'name')
+    @folders.each do |folder|
+      @html+="\n"+"\t" * @level + "<LI>"
+      @html+= folder.name + " - [" + link_to('X', folder, confirm: 'Are you sure?', method: :delete) + "]"
+      if(not Cnf::Folder.find_by_parent_id(folder.id).nil?)
+        @html+="\n"+"\t"*(@level+1) + "<UL>" + print_tree(3, @level+2) +"\n"+"\t"*(@level+1)+"</UL>"
+      end
+      @html+="\n"+"\t"*@level+"</LI>" 
+    end
+    return @html.html_safe
+end
 
-<li>Folder 1
-	<ul>
-	<li>Sub Item 1.1</li>
-	<li>Sub Item 1.2</li>
-	</ul>
-</li>
-<li>Item 3</li>
-
-<li>Folder 2
-	<ul>
-	<li>Sub Item 2.1</li>
-	<li>Folder 2.1
-		<ul>
-		<li>Sub Item 2.1.1</li>
-		<li>Sub Item 2.1.2</li>
-		</ul>
-	</li>
+print_tree %>
 </ul>
-</li>
-
-<li>Item 4</li>
-</ul>
-
-
 <script type="text/javascript">
 ddtreemenu.createTree("treemenu1", true)
 </script>
